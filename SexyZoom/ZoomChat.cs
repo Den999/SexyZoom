@@ -12,31 +12,56 @@ namespace SexyZoom
         private List<User> users = new List<User>();
         private List<Message> messages = new List<Message>();
 
+        public void AddUser(User newUser)
+        {
+            if (newUser == null)
+            {
+                Console.WriteLine("ERROR: User is null!");
+                return;
+            }
+            users.Add(newUser);
+        }
+
         public void WriteMessage(string userName, string text)
         {
-            User foundUser = null;
-            foreach (User user in users)
+            User user = null;
+            foreach (User u in users)
             {
-                if (user.Name == userName)
-                    foundUser = user;
+                if (u.Name == userName)
+                    user = u;
             }
 
-            if (foundUser == null)
+            if (user == null)
             {
-                Console.WriteLine("User not found!");
+                Console.WriteLine("ERROR: User not found!");
                 return;
             }
-            
+
+            string badWord = "";
             foreach (var barWord in BadWords)
             {
-                if (text.IndexOf(barWord) != -1)
-                    foundUser.Punish();
+                if (text.ToLower().IndexOf(barWord.ToLower()) != -1)
+                {
+                    badWord = barWord;
+                    user.Punish();
+                    break;
+                }
             }
 
-            if (foundUser.IsBadBoy)
+            if (badWord != "")
+            {
+                Console.WriteLine($"User: {user.Name} sayed: {badWord} - it is a bad word. His karma now: {user.Karma}");
+            }
+
+            if (user.IsBadBoy)
+            {
+                Console.WriteLine($"User: {user.Name} message: {messages} is muted cuz his karma is {user.Karma} <= 0.");
+            }
+
+            if (user.IsBadBoy || badWord != "")
                 return;
 
-            messages.Add(new Message(foundUser.Name, text));
+            messages.Add(new Message(user.Name, text));
         }
         
         public void LoadMessages(string filename)
@@ -49,6 +74,27 @@ namespace SexyZoom
             // tolya hello - не будет
             
             // WriteMessage(userName, message);
+        }
+
+        public void AddBadWord(string newBadWord)
+        {
+            if (newBadWord == "")
+            {
+                Console.WriteLine("ERROR: U trying to add empty bad word!");
+                return;
+            }
+            
+            BadWords.Add(newBadWord);
+        }
+
+        public void LoadBadWords(string filename)
+        {
+            
+        }
+
+        public void SaveBadWords(string filename)
+        {
+            
         }
 
         public void SaveLog(string filename)

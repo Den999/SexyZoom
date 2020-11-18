@@ -4,19 +4,19 @@ namespace SexyZoom
     {
         public string Name { get; private set; }
         
-        public bool IsBadBoy => karma <= 0;
+        public bool IsBadBoy => Karma <= 0;
         
-        private int karma;
+        public int Karma { get; private set; }
 
         public void Punish()
         {
-            karma -= ZoomChat.KarmaPointsReducePerBadWord;
+            Karma -= ZoomChat.KarmaPointsReducePerBadWord;
         }
 
-        public User(int karma, string name)
+        public User(string name, int karma)
         {
-            this.karma = karma;
-            this.Name = name;
+            Karma = karma;
+            Name = name;
         }
     }
 }

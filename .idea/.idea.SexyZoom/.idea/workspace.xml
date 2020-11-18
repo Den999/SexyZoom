@@ -23,9 +23,10 @@
         <option value="$PROJECT_DIR$/SexyZoom/FileParser.cs" />
         <option value="$PROJECT_DIR$/SexyZoom/Chat.cs" />
         <option value="$PROJECT_DIR$/SexyZoom/Message.cs" />
-        <option value="$PROJECT_DIR$/SexyZoom/Program.cs" />
         <option value="$PROJECT_DIR$/SexyZoom/User.cs" />
+        <option value="$PROJECT_DIR$/SexyZoom/Program.cs" />
         <option value="$PROJECT_DIR$/SexyZoom/ZoomChat.cs" />
+        <option value="$PROJECT_DIR$/SexyZoom/Database.cs" />
       </list>
     </option>
   </component>
@@ -69,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605713322042</updated>
-      <workItem from="1605713326059" duration="3322000" />
+      <workItem from="1605713326059" duration="3885000" />
     </task>
     <servers />
   </component>

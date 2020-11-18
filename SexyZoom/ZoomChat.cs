@@ -7,7 +7,7 @@ namespace SexyZoom
     public class ZoomChat : Singleton<ZoomChat>
     {
         public const int KarmaPointsReducePerBadWord = -50;
-        public const string BadWord = "Zoom";
+        private List<string> BadWords = new List<string>{"Zoom", "Fuck"};
         
         private List<User> users = new List<User>();
         private List<Message> messages = new List<Message>();
@@ -27,9 +27,12 @@ namespace SexyZoom
                 return;
             }
             
-            if (text.IndexOf(BadWord) != -1)
-                foundUser.Punish();
-            
+            foreach (var barWord in BadWords)
+            {
+                if (text.IndexOf(barWord) != -1)
+                    foundUser.Punish();
+            }
+
             if (foundUser.IsBadBoy)
                 return;
 
@@ -39,16 +42,22 @@ namespace SexyZoom
         public void LoadMessages(string filename)
         {
             // .txt
-            // write ivan hi
-            // write tolya mama
-            // write tolya zoom
-            // write tolya hello - не будет
+            // ivan hi
+            // tolya mama
+            // tolya zoom
+            // tolya zoom
+            // tolya hello - не будет
             
             // WriteMessage(userName, message);
         }
 
         public void SaveLog(string filename)
         {
+            foreach (Message message in messages)
+            {
+                // message.Textify();
+            }
+
             // ivan: hi
             // tolya: mama
         }

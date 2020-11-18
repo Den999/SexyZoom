@@ -6,7 +6,7 @@ namespace SexyZoom
     {
         static void Main(string[] args)
         {
-            var chat = new ZoomChat();
+            var chat = ZoomChat.Instance;
             chat.LoadUsers("user.json");
             chat.LoadMessages("chat.txt");
             

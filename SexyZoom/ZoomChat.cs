@@ -1,12 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
+using Newtonsoft.Json;
+using static System.Text.Json.JsonSerializer;
+
 
 namespace SexyZoom
 {
     public class ZoomChat : Singleton<ZoomChat>
     {
-        public const int KarmaPointsReducePerBadWord = -50;
+        public const int KarmaPointsReducePerBadWord = 50;
         private List<string> BadWords = new List<string>{"Zoom", "Fuck"};
         
         private List<User> users = new List<User>();
@@ -22,7 +26,7 @@ namespace SexyZoom
             users.Add(newUser);
         }
 
-        public void WriteMessage(string userName, string text)
+        private void AddMessage(string userName, string messageText)
         {
             User user = null;
             foreach (User u in users)
@@ -33,14 +37,14 @@ namespace SexyZoom
 
             if (user == null)
             {
-                Console.WriteLine("ERROR: User not found!");
+                Console.WriteLine($"ERROR: User: {userName} not found!");
                 return;
             }
 
             string badWord = "";
             foreach (var barWord in BadWords)
             {
-                if (text.ToLower().IndexOf(barWord.ToLower()) != -1)
+                if (messageText.ToLower().IndexOf(barWord.ToLower()) != -1)
                 {
                     badWord = barWord;
                     user.Punish();
@@ -55,25 +59,24 @@ namespace SexyZoom
 
             if (user.IsBadBoy)
             {
-                Console.WriteLine($"User: {user.Name} message: {messages} is muted cuz his karma is {user.Karma} <= 0.");
+                Console.WriteLine($"User: {user.Name} message: {messageText} is muted cuz his karma is {user.Karma} <= 0.");
             }
 
             if (user.IsBadBoy || badWord != "")
                 return;
 
-            messages.Add(new Message(user.Name, text));
+            messages.Add(new Message(user.Name, messageText));
         }
         
         public void LoadMessages(string filename)
         {
-            // .txt
-            // ivan hi
-            // tolya mama
-            // tolya zoom
-            // tolya zoom
-            // tolya hello - не будет
-            
-            // WriteMessage(userName, message);
+            string[] raw = File.ReadAllLines(filename);
+
+            foreach(string line in raw)
+            {
+                var words = line.Split();
+                AddMessage(words[0], words[1]);
+            }
         }
 
         public void AddBadWord(string newBadWord)
@@ -89,20 +92,26 @@ namespace SexyZoom
 
         public void LoadBadWords(string filename)
         {
-            
+            var text = File.ReadAllText(filename);
+            BadWords = JsonConvert.DeserializeObject<List<string>>(text);
         }
 
         public void SaveBadWords(string filename)
         {
-            
+            string data = Serialize(BadWords);
+            File.WriteAllText(filename, data);
         }
 
         public void SaveLog(string filename)
         {
+            string log ="";
+
             foreach (Message message in messages)
             {
-                // message.Textify();
+                log += message.Textify()+"\n";
             }
+
+            File.WriteAllText(filename, log);
 
             // ivan: hi
             // tolya: mama
@@ -110,14 +119,14 @@ namespace SexyZoom
 
         public void SaveUsers(string filename)
         {
-            // new JsonDocument(user);
-            // json dictionary users
+            string data = Serialize(users);
+            File.WriteAllText(filename, data);
         }
 
         public void LoadUsers(string filename)
         {
-            // users = loadFromJson();
-            // json dictionary users
+            var text = File.ReadAllText(filename);
+            users = JsonConvert.DeserializeObject<List<User>>(text);
         }
     }
 }

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "AVGJKY6IK8+I1C3lrs8SVrF5H4J8dgjabZJ+YEM9haGYJ7+qVbjhbkhZJlxviAKuE/1NXshYGnTCoyin0NOHig==",
+  "dgSpecHash": "ecc610Yz2keH5wNzvc2T9gHVy9pgPFb1mO3gA4iG6aiUUTZsNBIMmMk3KWPddN5t79brGHrtLyeuSL1EPU5mSw==",
   "success": true,
   "projectFilePath": "/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/SexyZoom.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/daniel/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

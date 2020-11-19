@@ -1,0 +1,14 @@
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/bin/Debug/netcoreapp3.1/SexyZoom.deps.json
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/bin/Debug/netcoreapp3.1/SexyZoom.runtimeconfig.json
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/bin/Debug/netcoreapp3.1/SexyZoom.runtimeconfig.dev.json
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/bin/Debug/netcoreapp3.1/SexyZoom.dll
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/bin/Debug/netcoreapp3.1/SexyZoom.pdb
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/obj/Debug/netcoreapp3.1/SexyZoom.csprojAssemblyReference.cache
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/obj/Debug/netcoreapp3.1/SexyZoom.AssemblyInfoInputs.cache
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/obj/Debug/netcoreapp3.1/SexyZoom.AssemblyInfo.cs
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/obj/Debug/netcoreapp3.1/SexyZoom.csproj.CoreCompileInputs.cache
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/obj/Debug/netcoreapp3.1/SexyZoom.dll
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/obj/Debug/netcoreapp3.1/SexyZoom.pdb
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/obj/Debug/netcoreapp3.1/SexyZoom.genruntimeconfig.cache
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/Users/daniel/Projects/HSE/SexyZoom/SexyZoom/obj/Debug/netcoreapp3.1/SexyZoom.csproj.CopyComplete

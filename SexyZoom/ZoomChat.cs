@@ -128,5 +128,7 @@ namespace SexyZoom
             var text = File.ReadAllText(filename);
             users = JsonConvert.DeserializeObject<List<User>>(text);
         }
+        
+        // ...
     }
 }
